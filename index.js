@@ -1,5 +1,6 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
+const jest = require('jest')
 const Manager = require('./lib/manager');
 const Engineer = require('./lib/engineer');
 const Intern = require('./lib/intern');
@@ -34,7 +35,7 @@ const managerQuestions = () => {
         }
     ])
     .then((answers) => {
-        const newManager = new newManager(answers.name, answers.id, answers.email, answers.officeNumber);
+        const newManager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber);
         teamMembers.push(newManager);
         newEntry();
     })
@@ -64,7 +65,7 @@ const engineerQuestions = () => {
         }
     ])
     .then((answers) => {
-        const newEngineer = new newEngineer(answers.name, answers.id, answers.email, answers.github);
+        const newEngineer = new Engineer(answers.name, answers.id, answers.email, answers.github);
         teamMembers.push(newEngineer);
         newEntry();
 
@@ -95,7 +96,7 @@ const internQuestions = () => {
         }
     ])
     .then((answers) => {
-        const newIntern = new newIntern(answers.name, answers.id, answers.email, answers.school);
+        const newIntern = new Intern(answers.name, answers.id, answers.email, answers.school);
         teamMembers.push(newIntern)
         newEntry();
     })
