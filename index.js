@@ -3,6 +3,7 @@ const fs = require('fs');
 const Manager = require('./lib/manager');
 const Engineer = require('./lib/engineer');
 const Intern = require('./lib/intern');
+const teamList = require('./src/teamList');
 
 // WHEN I start the application
 // THEN I am prompted to enter the team manager’s name, employee ID, email address, and office number
@@ -35,6 +36,7 @@ const managerQuestions = () => {
     .then((answers) => {
         const newManager = new newManager(answers.name, answers.id, answers.email, answers.officeNumber);
         teamMembers.push(newManager);
+        newEntry();
     })
 };
 
@@ -64,6 +66,7 @@ const engineerQuestions = () => {
     .then((answers) => {
         const newEngineer = new newEngineer(answers.name, answers.id, answers.email, answers.github);
         teamMembers.push(newEngineer);
+        newEntry();
 
     })
 };
@@ -93,7 +96,8 @@ const internQuestions = () => {
     ])
     .then((answers) => {
         const newIntern = new newIntern(answers.name, answers.id, answers.email, answers.school);
-        teamMembers.push(newIntern);
+        teamMembers.push(newIntern)
+        newEntry();
     })
 };
 
@@ -122,4 +126,11 @@ const newEntry = () => {
     })
 
 };
+
+const createTeam = () => {
+    fs.writeFile('./dist/index.html', teamList(teamMembers), (err) =>
+    err ? console.log(err) : console.log ('Done! Go check out your team list.'));
+};
+
+managerQuestions();
 
