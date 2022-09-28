@@ -1,4 +1,4 @@
-const createTeam = (teamList) => {
+const createTeam = (teamMembers) => {
     const html = [];
     
     const managerCreate = newManager => {
@@ -17,8 +17,7 @@ const createTeam = (teamList) => {
 
         html.push(managerCard);
     }
-}
-const engineerCreate = newEngineer => {
+    const engineerCreate = newEngineer => {
     let engineerCard = `
         <div class="card">
             <div class="card-header">
@@ -33,10 +32,9 @@ const engineerCreate = newEngineer => {
         </div>`
 
         html.push(engineerCard);
-    l
-}
-const internCreate = newIntern => {
-    let internCard = `
+    }
+    const internCreate = newIntern => {
+        let internCard = `
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title">${newIntern.name}</h3>
@@ -50,19 +48,21 @@ const internCreate = newIntern => {
         </div>`
 
         html.push(internCard);
-}
+    }
 
-for (let i = 0; i < teamList.length; i++) {
-    if (teamList[i].getRole() ==="Manager"){
-        managerCreate(teamList[i]);
+    for (let i = 0; i < teamMembers.length; i++) {
+        if (teamList[i].getRole() ==="Manager"){
+        managerCreate(teamMembers[i]);
+        }
+        if (teamList[i].getRole() === "Engineer"){
+        engineerCreate(teamMembers[i]);
+        }
+        if (teamList[i].getRole() === "Intern"){
+        internCreate(teamMembers[i]);
+        }
     }
-    if (teamList[i].getRole() === "Engineer"){
-        engineerCreate(teamList[i]);
-    }
-    if (teamList[i].getRole() === "Intern"){
-        internCreate(teamList[i]);
-    }
-   return html.join(""); 
+
+    return html.join(""); 
 }
 
 module.exports = teamList => {
@@ -86,5 +86,5 @@ module.exports = teamList => {
         
     </body>
     </html>`;
-    
+
 }
