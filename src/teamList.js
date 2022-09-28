@@ -22,12 +22,12 @@ const createTeam = (teamMembers) => {
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title">${newEngineer.name}</h3>
-                <h5>Manager</h5>
+                <h5>Engineer</h5>
             </div>
             <ul class="list-group">
-                <li class"list-group-item">ID number: ${newEngineer.id}</li>
-                <li class"list-group-item">Email: <span id="email"><a href="mailto:${newEngineer.email}">${newEngineer.email}</a></span></li>
-                <li class"list-group-item">GitHub page: <a href="https://github.com/${newEngineer.github}">${newEngineer.github}</a></li>
+                <li class="list-item">ID number: ${newEngineer.id}</li>
+                <li class="list-item">Email: <span id="email"><a href="mailto:${newEngineer.email}">${newEngineer.email}</a></span></li>
+                <li class="list-item">GitHub page: <a href="https://github.com/${newEngineer.github}">${newEngineer.github}</a></li>
             </ul>
         </div>`
 
@@ -38,12 +38,12 @@ const createTeam = (teamMembers) => {
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title">${newIntern.name}</h3>
-                <h5>Manager</h5>
+                <h5>Intern</h5>
             </div>
             <ul class="list-group">
-                <li class"list-group-item">ID number: ${newIntern.id}</li>
-                <li class"list-group-item">Email: <span id="email"><a href="mailto:${newIntern.email}">${newIntern.email}</a></span></li>
-                <li class"list-group-item">School: ${newIntern.school}</li>
+                <li class="list-group-item">ID number: ${newIntern.id}</li>
+                <li class="list-group-item">Email: <span id="email"><a href="mailto:${newIntern.email}">${newIntern.email}</a></span></li>
+                <li class="list-group-item">School: ${newIntern.school}</li>
             </ul>
         </div>`
 
@@ -51,13 +51,13 @@ const createTeam = (teamMembers) => {
     }
 
     for (let i = 0; i < teamMembers.length; i++) {
-        if (teamList[i].getRole() ==="Manager"){
+        if (teamMembers[i].getRole() === "Manager"){
         managerCreate(teamMembers[i]);
         }
-        if (teamList[i].getRole() === "Engineer"){
+        if (teamMembers[i].getRole() === "Engineer"){
         engineerCreate(teamMembers[i]);
         }
-        if (teamList[i].getRole() === "Intern"){
+        if (teamMembers[i].getRole() === "Intern"){
         internCreate(teamMembers[i]);
         }
     }
@@ -80,7 +80,7 @@ module.exports = teamList => {
         <header>
             <h1 class="text-center header">The Team</h1>
         </header>
-        <main class="row justify-content-center>
+        <main class="row justify-content-center">
             ${createTeam(teamList)}
         </main>
         
